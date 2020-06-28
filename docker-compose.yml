@@ -1,0 +1,53 @@
+version: "2.3"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: maju_db_dev
+    restart: on-failure
+    cpus: "0.5"
+    mem_reservation: "250m"
+    environment:
+      TZ: "America/Sao_Paulo"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: maju_playlist
+      MYSQL_USER: "maju"
+      MYSQL_PASSWORD: "maju"
+    volumes:
+      - ./scripts/database:/docker-entrypoint-initdb.d
+    ports:
+      - "23307:3306"
+    networks:
+      - maju-dev-network
+      
+  web:
+    container_name: maju_web_dev
+    hostname: maju_web
+    build:
+      context: .
+      dockerfile: DockerfileDev
+      args:
+        RUN_ENVIRONMENT: docker
+    restart: on-failure
+    cpus: "0.4"
+    mem_reservation: "120m"
+    environment:
+      TZ: "America/Sao_Paulo"
+      FLASK_DEBUG: 1
+    links: 
+      - db
+    depends_on:
+      - db
+    ports:  
+      - "8000:5000"
+    networks:
+      - maju-dev-network
+    volumes:
+      - .:/app/maju
+    command: ["wait-for-it", "db:3306", "--"]
+
+networks:
+  maju-dev-network:
+    driver: "bridge"

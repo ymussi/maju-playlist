@@ -1,0 +1,10 @@
+*.egg-info
+.vscode/
+.dist/
+__pycache__
+__pycache__/
+__pycache__/.*
+*.scannerwork
+*.eggs
+runtime.txt.example
+spotify_access.txt
