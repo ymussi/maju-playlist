@@ -13,6 +13,6 @@ class LogCityTemp(Model):
     music_gender = Column(String(244))
     provider = Column(String(244))
     status = Column(String(244))
-    created = Column(DateTime(timezone=True), server_default=func.now(tz=pytz.timezone('America/Fortaleza')))
+    created = Column(DateTime(timezone=True), server_default=func.now(tz=pytz.timezone('America/Sao_Paulo')))
     weather_response = Column(JSON())
     provider_response = Column(JSON())
