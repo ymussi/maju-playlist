@@ -70,6 +70,8 @@ To get a statistics:
 
 - Send a GET request to endpoint: **/statistics**
 
+PS: My access key to the weatherpi only allows me to consult 10 cities and make 400 requests per day because it is a free account.
+
 ## Testes
 
 - As this api does not perform mutations, no tests have been implemented.
