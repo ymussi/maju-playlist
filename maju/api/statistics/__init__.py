@@ -12,6 +12,7 @@ class StatisticsManager:
             for obj in query:
                 city = {
                     'city': obj.city,
+                    'uf': obj.uf,
                     'count': obj.count,
                     'last_created': str(obj.last_created)
                 }

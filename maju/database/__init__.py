@@ -21,19 +21,6 @@ class CRUDMixin:
     """
     Mixin that adds convenience methods for CRUD (create, read, update, delete) operations.
     """
-
-    @classmethod
-    def create(cls, **kwargs):
-        """Create a new record and save it the database."""
-        instance = cls(**kwargs)
-        return instance.save()
-
-    def update(self, commit=True, **kwargs):
-        """Update specific fields of a record."""
-        for attr, value in kwargs.items():
-            setattr(self, attr, value)
-        return commit and self.save() or self
-
     def save(self, commit=True):
         """Save the record."""
         session.add(self)
@@ -47,11 +34,6 @@ class CRUDMixin:
             finally:
                 session.close()
         return self
-
-    def delete(self, commit=True):
-        """Remove the record from the database."""
-        session.delete(self)
-        return commit and session.commit()
 
     def as_dict(self, filter_columns=None, enum_values=None):
         """
@@ -79,6 +61,7 @@ class CRUDMixin:
     @classmethod
     def get_statistics(cls):
         instance = session.query(cls.city, \
+            func.max(cls.uf).label('uf'), \
             func.count(cls.city).label('count'), \
             func.max(cls.created).label('last_created')).group_by(cls.city).\
                 order_by(cls.city.asc())

@@ -5,9 +5,10 @@ import logging
 
 class LoggerManager:
     
-    def __init__(self, city_name, temp, gender, provider,
+    def __init__(self, city_name, uf, temp, gender, provider,
                  weather_response, provider_response, status='success'):
         self.city_name = city_name
+        self.uf = uf
         self.temp = temp
         self.music_gender = gender
         self.provider_response = provider_response
@@ -19,6 +20,7 @@ class LoggerManager:
         try:
             log = LogCityTemp()
             log.city = self.city_name.title()
+            log.uf = self.uf
             log.temp = self.temp
             log.music_gender = self.music_gender
             log.provider = self.provider

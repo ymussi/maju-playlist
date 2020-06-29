@@ -11,5 +11,5 @@ class CityValidations:
             raise BadRequest("'city' must contain a string of characters ('Campinas'), not numerical ('123456').")
         
         if not temp.get('status'):
-            raise BadRequest(temp.get('temp'))
+            raise BadRequest(temp.get('message'))
                        

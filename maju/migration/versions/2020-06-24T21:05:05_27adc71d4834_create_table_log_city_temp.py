@@ -20,6 +20,7 @@ def upgrade():
     op.create_table('log_city_temp',
                     sa.Column('id', sa.Integer(), nullable=False, primary_key=True, autoincrement=True),
                     sa.Column('city', sa.String(244)),
+                    sa.Column('uf', sa.String(244)),
                     sa.Column('temp', sa.Float()),
                     sa.Column('music_gender', sa.String(244)),
                     sa.Column('provider', sa.String(244)),

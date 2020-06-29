@@ -13,12 +13,21 @@ class PlaylistServices:
         self._city_temper = None
         self._provider_response = None
         self._weather_response = None
+        self._uf = None
         
     def get_city_temper(self):
-        try:    
-            self._weather_response = Weather().get_weather(self._city_name)
-            self._city_temper = self._weather_response.get('main').get('temp')
-            return {'status': True, 'temp': self._city_temper}
+        try:
+            weather_response = Weather().get_weather(self._city_name)
+            if weather_response.get('by') == "city_name":
+                self._city_temper = weather_response.get('results').get('temp')
+                self._uf = weather_response.get('results').get('city').split(',')[1].strip()
+                self._weather_response = weather_response
+                response = {'status': True, 'temp': self._city_temper}
+            else:
+                response =  {'status': False, 'message': 'City not found.'}
+                self._weather_response = response
+                
+            return response
         except Exception as e:
             print(
                 f"Error in function get_city_temper in class PlaylistServices - msg: '{self._weather_response.get('message')}' - err: {str(e)}")
@@ -70,18 +79,18 @@ class PlaylistServices:
                     break
                 
             if playlist == []:
-                LoggerManager(city_name=self._city_name, temp=self._city_temper, gender=gender, provider=self._provider,
+                LoggerManager(city_name=self._city_name, uf=self._uf, temp=self._city_temper, gender=gender, provider=self._provider,
                           provider_response=self._provider_response, weather_response=self._weather_response, status='filed').save_log()
                 return "Oh no.. ): Something went wrong, please try again later."
             
-            LoggerManager(city_name=self._city_name, temp=self._city_temper, gender=gender, provider=self._provider,
+            LoggerManager(city_name=self._city_name, uf=self._uf, temp=self._city_temper, gender=gender, provider=self._provider,
                           provider_response=self._provider_response, weather_response=self._weather_response).save_log()
                 
             return playlist
         except Exception as e:
             print(f"Error in function get_playlist in class PlaylistServices - {str(e)}")
             
-            LoggerManager(city_name=self._city_name, temp=self._city_temper, gender=gender, provider=self._provider,
+            LoggerManager(city_name=self._city_name, uf=self._uf, temp=self._city_temper, gender=gender, provider=self._provider,
                           provider_response=self._provider_response, weather_response=self._weather_response, status='filed').save_log()
             
             return {'status': False, 'err': str(e)}
