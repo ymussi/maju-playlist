@@ -1,11 +1,12 @@
 from sqlalchemy import Column, Integer, String, JSON, DateTime, Float
 from sqlalchemy.sql import func
 from maju.database import Base, Model
-from datetime import datetime
 import pytz
 
 
 class LogCityTemp(Model):
+    from datetime import datetime
+    
     __tablename__ = 'log_city_temp'
     id = Column(Integer, nullable=False, unique=True, primary_key=True, autoincrement=True)
     city = Column(String(244))
