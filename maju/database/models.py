@@ -13,6 +13,6 @@ class LogCityTemp(Model):
     music_gender = Column(String(244))
     provider = Column(String(244))
     status = Column(String(244))
-    created = Column(DateTime(timezone=True), default=datetime.now()))
+    created = Column(DateTime(timezone=True), default=datetime.now())
     weather_response = Column(JSON())
     provider_response = Column(JSON())
