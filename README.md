@@ -72,6 +72,10 @@ To get a statistics:
 
 PS: My access key to the weatherpi only allows me to consult 10 cities and make 400 requests per day because it is a free account.
 
+## Logs
+
+- the logs can be seen by the metabase on: http://52.67.150.239:17030/dashboard/1
+
 ## Testes
 
 - As this api does not perform mutations, no tests have been implemented.
