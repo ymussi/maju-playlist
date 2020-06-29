@@ -12,8 +12,7 @@ NOTE: The instance is without ssl certificate because I am using the free versio
 
 - Languege: Python 3.6
 - Package manager: pip
-- Main dependencies: [_Flask 1.0.2_](https://flask.palletsprojects.com/en/1.1.x/), [_Flask-Restplus 0.13.0_](https://flask-restplus.readthedocs.io/en/stable/), [_SQLAlchemy 1.3.8_](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), [_Alembic 1.2.1_](https://alembic.sqlalchemy.org/en/latest/tutorial.html), 
-- Tests: [_unittest_](https://docs.python.org/3/library/unittest.html)
+- Main dependencies: [_Flask 1.0.2_](https://flask.palletsprojects.com/en/1.1.x/), [_Flask-Restplus 0.13.0_](https://flask-restplus.readthedocs.io/en/stable/), [_SQLAlchemy 1.3.8_](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), [_Alembic 1.2.1_](https://alembic.sqlalchemy.org/en/latest/tutorial.html), [_Tekore_](https://tekore.readthedocs.io/en/stable/)
 - DB: [_MySQL 5.7_](https://dev.mysql.com/doc/refman/5.7/en/)
 
 ## Installation
@@ -60,6 +59,16 @@ The database server will be exposed externally on:
 $ cd maju/
 $ alembic upgrade head
 ```
+
+## Working
+
+To get a playlist
+
+- Send a GET request to endpoint: **/playlist/<city_name>**
+
+To get a statistics:
+
+- Send a GET request to endpoint: **/statistics**
 
 ## Testes
 
