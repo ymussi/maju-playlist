@@ -14,3 +14,4 @@ sqlalchemy-utils==0.33.9
 aniso8601==7.0.0
 marshmallow
 tekore
+pytz

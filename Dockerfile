@@ -1,4 +1,5 @@
-FROM python:3.6
+FROM python:3.6-stretch
+LABEL mantainer="ymussi@gmail.com"
 LABEL fileversion=v0.1
 
 ARG RUN_ENVIRONMENT
@@ -7,13 +8,14 @@ ENV PYTHONUNBUFFERED=0
 ENV FLASK_ENV=${RUN_ENVIRONMENT}
 ENV ENV=${RUN_ENVIRONMENT}
 ENV DBENV=${RUN_ENVIRONMENT}
-ENV TZ='America/Sao_Paulo'
+ENV TZ=America/Sao_Paulo
 
 WORKDIR /app/maju/
 
-COPY . .
-
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
+COPY . .
 
 RUN pip install -r requirements.txt && \
     python setup.py develop

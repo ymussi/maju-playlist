@@ -1,6 +1,8 @@
 from sqlalchemy import Column, Integer, String, JSON, DateTime, Float
 from sqlalchemy.sql import func
 from maju.database import Base, Model
+from datetime import datetime
+import pytz
 
 
 class LogCityTemp(Model):
@@ -11,6 +13,6 @@ class LogCityTemp(Model):
     music_gender = Column(String(244))
     provider = Column(String(244))
     status = Column(String(244))
-    created = Column(DateTime(timezone=True), server_default=func.now())
+    created = Column(DateTime(timezone=True), default=datetime.now(tz=pytz.timezone("America/Sao_Paulo")))
     weather_response = Column(JSON())
     provider_response = Column(JSON())

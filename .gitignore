@@ -8,3 +8,4 @@ __pycache__/.*
 *.eggs
 runtime.txt.example
 spotify_access.txt
+zoneinfo
