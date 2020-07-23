@@ -74,7 +74,7 @@ PS: My access key to the weatherpi only allows me to consult 10 cities and make 
 
 ## Logs
 
-- the logs can be seen by the metabase on: http://52.67.150.239:17030/dashboard/1
+- the logs can be seen by the metabase on: http://52.67.150.239:17030/public/dashboard/a54ddf1c-6ad2-42ae-bd88-28e7642301bc
 
 ## Testes
 
