@@ -35,9 +35,8 @@ jobs:
         LATEST_TAG=latest
 
         # Constrói a imagem Docker. O '.' indica que o Dockerfile está na raiz do contexto.
-        docker build -t ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG} \
-                     -t ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${LATEST_TAG} \
-                     .
+        docker build -t ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
+        docker build -t ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${LATEST_TAG}
 
     - name: Push Docker Image
       run: |
