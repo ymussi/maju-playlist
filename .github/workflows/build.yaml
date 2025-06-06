@@ -43,7 +43,10 @@ jobs:
         # Publica (push) as imagens para o Container Registry da Magalu Cloud
         IMAGE_TAG=${{ github.sha }} # Redefine a tag para garantir
         LATEST_TAG=latest
-
+        echo ${IMAGE_TAG}
+        echo ${LATEST_TAG}
+        echo ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
+        echo ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${LATEST_TAG}
         docker push ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
         docker push ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${LATEST_TAG}
 
