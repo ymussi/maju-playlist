@@ -3,7 +3,7 @@ name: Build Docker MGC
 on:
   push:
     branches:
-      - main # Este workflow será disparado automaticamente a cada 'git push' na branch 'main'
+      - master # Este workflow será disparado automaticamente a cada 'git push' na branch 'main'
 
 env:
   REGISTRY_URL: registry.magalu.cloud         # <--- AJUSTE: URL do seu Container Registry Magalu Cloud
