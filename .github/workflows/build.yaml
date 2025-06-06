@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to Magalu Cloud
+name: Build Docker MGC
 
 on:
   push:
