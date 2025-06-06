@@ -47,6 +47,8 @@ jobs:
         echo ${LATEST_TAG}
         echo ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
         echo ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${LATEST_TAG}
+        docker login ${{ env.REGISTRY_URL }} -u ${{ env.MGC_REGISTRY_USERNAME }} \
+          -p ${{ env.MGC_REGISTRY_TOKEN }}
         docker push ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
         docker push ${{ env.REGISTRY_URL }}/${{ env.IMAGE_NAME }}:${LATEST_TAG}
 
