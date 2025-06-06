@@ -6,8 +6,8 @@ on:
       - master # Este workflow será disparado automaticamente a cada 'git push' na branch 'main'
 
 env:
-  REGISTRY_URL: container-registry.br-se1.magalu.cloud         # <--- AJUSTE: URL do seu Container Registry Magalu Cloud
-  IMAGE_NAME: maju-playlist                # <--- AJUSTE: Nome que você quer dar à sua imagem (ex: 'nome-do-seu-servico')
+  REGISTRY_URL: ${{ secrets.MGC_REGISTRY_URL }}         # <--- AJUSTE: URL do seu Container Registry Magalu Cloud
+  IMAGE_NAME: ${{ secrets.IMAGE_NAME }}                # <--- AJUSTE: Nome que você quer dar à sua imagem (ex: 'nome-do-seu-servico')
 
 jobs:
   build-and-push:
