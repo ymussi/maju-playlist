@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY_URL: ${{ secrets.MGC_REGISTRY_URL }}         # <--- AJUSTE: URL do seu Container Registry Magalu Cloud
-  IMAGE_NAME: ${{ secrets.IMAGE_NAME }}                # <--- AJUSTE: Nome que você quer dar à sua imagem (ex: 'nome-do-seu-servico')
+  IMAGE_NAME: ${{ secrets.PROJECT_ID }}/${{ secrets.PROJECT_NAME }}                # <--- AJUSTE: Nome que você quer dar à sua imagem (ex: 'nome-do-seu-servico')
 
 jobs:
   build-and-push:
